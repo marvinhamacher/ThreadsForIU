@@ -7,18 +7,10 @@ public class Main {
         Thread two = new Thread(unsyncklasse);
         Thread three = new Thread(unsyncklasse);
         Thread four = new Thread(unsyncklasse);
-        Thread five = new Thread(unsyncklasse);
-        Thread six = new Thread(unsyncklasse);
-        Thread seven = new Thread(unsyncklasse);
-        Thread eight = new Thread(unsyncklasse);
-        one.run();
-        two.run();
-        three.run();
-        four.run();
-        five.run();
-        six.run();
-        seven.run();
-        eight.run();
+        one.start();
+        two.start();
+        three.start();
+        four.start();
         try {
             one.join();
             two.join();
