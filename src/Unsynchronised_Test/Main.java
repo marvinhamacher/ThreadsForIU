@@ -15,6 +15,7 @@ public class Main {
             one.join();
             two.join();
             three.join();
+            four.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
