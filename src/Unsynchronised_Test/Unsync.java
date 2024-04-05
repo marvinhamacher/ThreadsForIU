@@ -1,11 +1,17 @@
 package Unsynchronised_Test;
 
 public class Unsync extends Thread{
-    public static int counter;
+    public static long counter;
 
     @Override
     public void run() {
-        for(int i = 0; i<10000000;i++){
+        for(long i = 0L; i<1000L;i++){
+            System.out.println(counter);
+            try {
+                sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             counter++;
         }
     }
