@@ -9,7 +9,8 @@ public class DeadlockExample {
         public String getName() {
             return this.name;
         }
-        public synchronized void greet(Friend greeter) {
+
+        public synchronized void greetedBy(Friend greeter) {
             System.out.format("%s: %s" + "  has greeted me!%n", this.name, greeter.getName());
             greeter.greetBack(this);
         }
@@ -23,13 +24,13 @@ public class DeadlockExample {
         final Friend b = new Friend("B");
         new Thread(new Runnable() {
             public void run() {
-                a.greet(b);
+                a.greetedBy(b);
             }
         }).start();
 
         new Thread(new Runnable() {
             public void run() {
-                b.greet(a);
+                b.greetedBy(a);
             }
         }).start();
     }

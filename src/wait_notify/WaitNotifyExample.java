@@ -10,6 +10,7 @@ public class WaitNotifyExample {
         Thread producerThread = new Thread(new Producer());
 
         System.out.println("consumer start");
+        // consumer2Thread.setPriority(10);
         consumer1Thread.start();
         consumer2Thread.start();
         try {
@@ -33,8 +34,9 @@ public class WaitNotifyExample {
             synchronized (lock) {
                 productAvailable = true;
                 System.out.println("producer: Produkt ist jetzt erstellt.");
-                // lock.notify() // Nur ein Thread benachrichtigen
-                lock.notifyAll(); // Alle Threads benachrichtigen
+                lock.notify(); // Nur ein Thread benachrichtigen
+                //lock.notify(); // Beide Threads nacheinander benachrichtigen
+                //lock.notifyAll(); // Alle Threads benachrichtigen
             }
         }
     }
@@ -49,10 +51,18 @@ public class WaitNotifyExample {
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
+                /*
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                 */
                 System.out.println("consumer1: Produkt wurde konsumiert.");
             }
         }
     }
+
     static class Consumer2 implements Runnable {
         @Override
         public void run() {
