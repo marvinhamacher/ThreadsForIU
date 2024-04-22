@@ -58,7 +58,10 @@ public class WaitNotifyExample {
                     e.printStackTrace();
                 }
                  */
-                System.out.println("consumer1: Produkt wurde konsumiert.");
+                if (productAvailable){
+                    System.out.println("consumer1: Produkt wurde konsumiert.");
+                }
+
             }
         }
     }
@@ -73,7 +76,10 @@ public class WaitNotifyExample {
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
-                System.out.println("consumer2: Produkt wurde konsumiert.");
+                if (productAvailable){
+                    System.out.println("consumer2: Produkt wurde konsumiert.");
+                }
+
             }
         }
     }
