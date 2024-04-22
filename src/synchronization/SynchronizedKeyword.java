@@ -6,9 +6,9 @@ public class SynchronizedKeyword {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Thread thread1 = new Thread(new MyRunnable(), "Thread 1");
-        Thread thread2 = new Thread(new MyRunnable(), "Thread 2");
-        Thread thread3 = new Thread(new MyRunnable(), "Thread 3");
+        Thread thread1 = new Thread(new Increment(), "Thread 1");
+        Thread thread2 = new Thread(new Increment(), "Thread 2");
+        Thread thread3 = new Thread(new Increment(), "Thread 3");
         //
         thread1.start();
         thread2.start();
@@ -19,7 +19,7 @@ public class SynchronizedKeyword {
         System.out.println(counter);
     }
 
-    static class MyRunnable implements Runnable {
+    static class Increment implements Runnable {
         @Override
         public void run() {
             increment1();
