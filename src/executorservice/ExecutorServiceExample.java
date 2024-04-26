@@ -8,14 +8,11 @@ public class ExecutorServiceExample {
         // Erstellen eines Thread-Pools mit 2 Threads
         ExecutorService threadPool = Executors.newFixedThreadPool(3);
 
-        // Ausführen von Thread A und Thread B im Thread-Pool
         threadPool.execute(new MyRunnableA());
         threadPool.execute(new MyRunnableB());
         threadPool.execute(new MyRunnableA());
         threadPool.execute(new MyRunnableB());
 
-        System.out.println("Fertig");
-        // Beenden des Thread-Pools nachdem alle Aufgaben abgeschlossen sind
         threadPool.shutdown();
     }
 
