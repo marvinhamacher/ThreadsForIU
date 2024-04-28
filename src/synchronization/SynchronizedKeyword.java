@@ -34,12 +34,11 @@ public class SynchronizedKeyword {
     }
 
     public static void increment2(){
-        synchronized (lock){
-            for (int i = 0 ; i < 50; i++) {
-                counter++;
-                System.out.println(Thread.currentThread().getName());
-            }
+        for (int i = 0 ; i < 50; i++) {
+            counter++;
+            System.out.println(Thread.currentThread().getName());
         }
+
     }
 }
 

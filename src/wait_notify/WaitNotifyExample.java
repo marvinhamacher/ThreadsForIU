@@ -34,9 +34,9 @@ public class WaitNotifyExample {
             synchronized (lock) {
                 productAvailable = true;
                 System.out.println("producer: Produkt ist jetzt erstellt.");
-                lock.notify(); // Nur ein Thread benachrichtigen
+                //lock.notify(); // Nur ein Thread benachrichtigen
                 //lock.notify(); // Beide Threads nacheinander benachrichtigen
-                //lock.notifyAll(); // Alle Threads benachrichtigen
+                lock.notifyAll(); // Alle Threads benachrichtigen
             }
         }
     }
