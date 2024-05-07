@@ -1,13 +1,14 @@
-package BlockingQueues;
+package nonConcurrentQueues;
 
+import java.util.ArrayDeque;
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 
-public class Kellner extends Thread{
+public class KellnerNonConcurrent extends Thread{
 
-    private ArrayBlockingQueue<Integer> backlog;
+    private ArrayDeque<Integer> backlog;
 
-    public Kellner(ArrayBlockingQueue<Integer> backlog) {
+    public KellnerNonConcurrent(ArrayDeque<Integer> backlog) {
         this.backlog = backlog;
     }
 
@@ -26,7 +27,7 @@ public class Kellner extends Thread{
     public void bestellungAufnehmen() throws InterruptedException {
         Random random = new Random();
         int num = random.nextInt(7);
-        this.backlog.put(num);
+        this.backlog.add(num);
         System.out.println("\u001B[32mEin mal nummer: " + num +" bitte");
     }
 }

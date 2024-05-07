@@ -3,7 +3,7 @@ package AtomicInteger.compareAndSet;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class AtomicLongCompareAndSet extends Thread{
-    public AtomicLong counter = new AtomicLong(0L);
+    public static AtomicLong counter = new AtomicLong(1L);
 
     public AtomicLongCompareAndSet(String name){
         setName(name);
@@ -12,12 +12,11 @@ public class AtomicLongCompareAndSet extends Thread{
     @Override
     public void run() {
         long currentValue = counter.get();
-        for (long i = 0L; i < 1000L;) {
+        for (long i = 0L; i < 100L;i++) {
             while(!counter.compareAndSet(currentValue,currentValue+1)){
                 currentValue = counter.get();
                 System.out.println(getName() + currentValue);
             }
-            i = currentValue; // setzt i gleich den Current value  da die implementation eine iteration mehr als die
             // Increment and Get Implementation benötigt.
             System.out.println(getName() + currentValue);
             try {

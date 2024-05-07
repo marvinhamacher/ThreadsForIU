@@ -10,7 +10,7 @@ public class Unsync extends Thread {
 
     @Override
     public void run() {
-        for (long i = 0L; i < 1000L; i++) {
+        for (long i = 0L; i < 100L; i++) {
             System.out.println(getName() + counter);
             try {
                 sleep(10);

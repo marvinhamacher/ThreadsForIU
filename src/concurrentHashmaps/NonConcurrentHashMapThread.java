@@ -16,13 +16,17 @@ public class NonConcurrentHashMapThread extends Thread{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            map.put(id%3, getName());
+            map.put(id%3, getName()); // 1 2 0
         }
         System.out.println("This is the normal hash map: " +map.toString());
     }
 
     public void nameFromOutside(String name){
         this.setName(name);
+    }
+
+    public int giveMeSize(){
+        return map.size();
     }
 
 

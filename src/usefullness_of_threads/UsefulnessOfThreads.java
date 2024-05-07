@@ -55,7 +55,7 @@ class CalculationTask implements Runnable {
         System.out.println("Thread " + Thread.currentThread().getName() + " startet die Berechnung");
         // Thread pausieren damit er eventuell länger braucht als main
         try {
-            Thread.sleep(5000); // Hier den wert anpassen damit verschiedene Bedingungen zutreffen
+            Thread.sleep(100); // Hier den wert anpassen damit verschiedene Bedingungen zutreffen
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

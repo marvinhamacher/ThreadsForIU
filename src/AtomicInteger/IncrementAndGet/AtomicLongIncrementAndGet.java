@@ -8,11 +8,11 @@ public class AtomicLongIncrementAndGet extends Thread {
         setName(name);
     }
 
-    public AtomicLong counter = new AtomicLong(0L);
+    public static AtomicLong counter = new AtomicLong(0L);
 
     @Override
     public void run() {
-        for (long i = 0L; i < 1000L; i++) {
+        for (long i = 0L; i < 100L; i++) {
             long currentValue = counter.incrementAndGet();
             System.out.println(getName() + currentValue);
             try {

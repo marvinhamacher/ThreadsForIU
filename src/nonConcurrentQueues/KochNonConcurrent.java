@@ -1,14 +1,13 @@
-package BlockingQueues;
+package nonConcurrentQueues;
 
-import java.util.Deque;
+import java.util.ArrayDeque;
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.CountDownLatch;
 
-public class Koch extends Thread{
+public class KochNonConcurrent extends Thread{
 
-    private ArrayBlockingQueue<Integer> backlog;
+    private ArrayDeque<Integer> backlog;
 
-    public Koch(ArrayBlockingQueue<Integer> backlog) {
+    public KochNonConcurrent(ArrayDeque<Integer> backlog) {
         this.backlog = backlog;
     }
 
@@ -16,7 +15,6 @@ public class Koch extends Thread{
     public void run() {
         for(int i = 0; i<10; i++){
             try {
-                sleep(10);
                 kochen();
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -26,7 +24,7 @@ public class Koch extends Thread{
 
     public void kochen() throws InterruptedException {
         System.out.println("\u001B[33mBestellungen vorher: " + this );
-        Integer m = backlog.take();
+        Integer m = backlog.removeFirst();
         System.out.println("\u001B[31mGericht: " + m + " ist fertig");
     }
 
